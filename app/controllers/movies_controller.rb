@@ -7,14 +7,19 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
     #We want to add the ability to click on the "Movie Title" and 
     #The "Release Date". And the Rating.
     
     #G = 1, PG = 2, PG-13 = 3, R = 4. This should ensure that our 
     
     #
-    
+ #   if params[:ratings].nil? and params[:sort_by].nil?
+#		params[:ratings] = session[:ratings]
+	#	params[:sort_by] = session[:sort_by]
+	#end
+	@movies = Movie.all
+	
+	
   end
 
   def new
