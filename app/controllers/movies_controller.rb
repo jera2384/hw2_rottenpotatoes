@@ -8,16 +8,26 @@ class MoviesController < ApplicationController
 
   def index
     #We want to add the ability to click on the "Movie Title" and 
-    #The "Release Date". And the Rating.
+    #The "Release Date". And the Rating for part three, I noticed.
     
     #G = 1, PG = 2, PG-13 = 3, R = 4. This should ensure that our 
-    
-    #
     if params[:ratings].nil? and params[:sort_by].nil?
 		params[:ratings] = session[:ratings]
 		params[:sort_by] = session[:sort_by]
 	end
-	@movies = Movie.all
+	@all_ratings = Movie.all_ratings
+	@ratings = params[:ratings]
+	#if user unchecks all boxes, replace with session params
+	if @ratings.nil?
+		if session[:ratings].nil?
+			@ratings = {"G" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}
+		else
+			@ratings = session[:ratings]
+		end
+		@movies = Movie.all
+	else
+		@movies = Movie.find_all_by_rating(@ratings.keys)
+	end
 	if params[:sort_by] == 'title'
 	@title_class = "hilite"
 	@movies = @movies.sort_by(&:title)
@@ -25,6 +35,7 @@ class MoviesController < ApplicationController
 		@release_date_class = "hilite"
 		@movies = @movies.sort_by(&:release_date)
 	end
+	session[:ratings] = @ratings
 	session[:sort_by] = params[:sort_by]
   end
 
