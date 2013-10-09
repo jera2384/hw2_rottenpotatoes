@@ -13,10 +13,10 @@ class MoviesController < ApplicationController
     #G = 1, PG = 2, PG-13 = 3, R = 4. This should ensure that our 
     
     #
- #   if params[:ratings].nil? and params[:sort_by].nil?
-#		params[:ratings] = session[:ratings]
-	#	params[:sort_by] = session[:sort_by]
-	#end
+    if params[:ratings].nil? and params[:sort_by].nil?
+		params[:ratings] = session[:ratings]
+		params[:sort_by] = session[:sort_by]
+	end
 	@movies = Movie.all
 	if params[:sort_by] == 'title'
 	@title_class = "hilite"
