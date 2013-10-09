@@ -18,8 +18,14 @@ class MoviesController < ApplicationController
 	#	params[:sort_by] = session[:sort_by]
 	#end
 	@movies = Movie.all
-	
-	
+	if params[:sort_by] == 'title'
+	@title_class = "hilite"
+	@movies = @movies.sort_by(&:title)
+	elsif params[:sort_by] == 'release_date'
+		@release_date_class = "hilite"
+		@movies = @movies.sort_by(&:release_date)
+	end
+	session[:sort_by] = params[:sort_by]
   end
 
   def new
