@@ -8,6 +8,13 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    #We want to add the ability to click on the "Movie Title" and 
+    #The "Release Date". And the Rating.
+    
+    #G = 1, PG = 2, PG-13 = 3, R = 4. This should ensure that our 
+    
+    #
+    
   end
 
   def new
