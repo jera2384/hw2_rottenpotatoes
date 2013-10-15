@@ -59,3 +59,8 @@ Served asset /application.js - 200 OK (83ms)
 
 Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-02 14:06:18 -0700
 Served asset /jquery.js - 200 OK (78ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateMovies (20111119180638)
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("movies")
